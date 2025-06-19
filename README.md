@@ -27,13 +27,12 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### 3. Create `.env` File
+### 3. change the openai api key on  `.env` File
 
 Create a `.env` file in the project root and add your API key as follows:  
-**No spaces or quotes are needed.**
 
 ```
-OPENAI_API_KEY=your_openai_api_key_here
+OPENAI_API_KEY = "your_openai_api_key_here"
 ```
 
 **Do not commit your `.env` file to any public repository. Add it to `.gitignore`.**
