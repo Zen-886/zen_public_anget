@@ -6,7 +6,7 @@ import streamlit as st
 import time
 from common_utils import export_paired_messages_to_csv
 
-dotenv_path = '.env_tech'
+dotenv_path = '.env'
 load_dotenv(dotenv_path=dotenv_path)
 openai_api_key = os.getenv('OPENAI_API_KEY')
 
