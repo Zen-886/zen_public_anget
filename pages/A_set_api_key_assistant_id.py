@@ -19,18 +19,6 @@ with st.sidebar:
     openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
     assistant_id = st.text_input("OpenAI Assistant ID", key="assistant_id", type="password")
     st.header("履歴エクスポート")
-    # ここで毎回最新のセッションステートを参照
-    paired_messages = st.session_state.get("paired_messages", [])
-    if isinstance(paired_messages, list) and len(paired_messages) > 0:
-        csv_data = export_paired_messages_to_csv(paired_messages)
-        st.download_button(
-            label="💾 チャット履歴をCSVダウンロード",
-            data=csv_data.encode('utf-8-sig'),
-            file_name="chat_history.csv",
-            mime="text/csv"
-        )
-    else:
-        st.info("チャット履歴がありません。")
 
 # --- メッセージ履歴表示 ---
 for msg in st.session_state.messages:
@@ -130,3 +118,19 @@ if submitted and msg:
 
     except Exception as e:
         st.error(f"エラーが発生しました: {e}")
+
+# --- サイドバー ---
+with st.sidebar:
+    st.header("履歴エクスポート")
+    # ここで毎回最新のセッションステートを参照
+    paired_messages = st.session_state.get("paired_messages", [])
+    if isinstance(paired_messages, list) and len(paired_messages) > 0:
+        csv_data = export_paired_messages_to_csv(paired_messages)
+        st.download_button(
+            label="💾 チャット履歴をCSVダウンロード",
+            data=csv_data.encode('utf-8-sig'),
+            file_name="chat_history.csv",
+            mime="text/csv"
+        )
+    else:
+        st.info("チャット履歴がありません。")
